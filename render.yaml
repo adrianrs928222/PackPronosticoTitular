@@ -1,0 +1,36 @@
+databases:
+  - name: pronostico-titular-db
+    plan: basic
+    databaseName: pronostico_titular
+    user: pronostico_titular
+services:
+  - type: web
+    name: pronostico-titular-vip
+    runtime: node
+    plan: starter
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        fromDatabase:
+          name: pronostico-titular-db
+          property: connectionString
+      - key: PUBLIC_URL
+        sync: false
+      - key: STRIPE_SECRET_KEY
+        sync: false
+      - key: STRIPE_PRICE_ID
+        sync: false
+      - key: STRIPE_WEBHOOK_SECRET
+        sync: false
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: TELEGRAM_CHANNEL_ID
+        value: -1003928777002
+      - key: TELEGRAM_WEBHOOK_SECRET
+        generateValue: true
+      - key: COOKIE_SECRET
+        generateValue: true

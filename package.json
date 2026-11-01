@@ -1,0 +1,1 @@
+{"name":"pronostico-titular-vip","version":"1.0.0","private":true,"type":"module","engines":{"node":">=20"},"scripts":{"start":"node server.js","dev":"node --watch server.js","setup:telegram":"node scripts/setup-telegram.js"},"dependencies":{"cookie-parser":"^1.4.7","dotenv":"^16.4.7","express":"^4.21.2","helmet":"^8.0.0","pg":"^8.13.1","stripe":"^17.7.0"}}
